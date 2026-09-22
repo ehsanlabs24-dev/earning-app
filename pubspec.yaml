@@ -1,21 +1,22 @@
-workflows:
-  android-workflow:
-    name: Android Workflow
-    max_build_duration: 60
-    instance_type: mac_mini_m2
-    environment:
-      flutter: stable
-      java: 17
-    scripts:
-      - name: Set Java 17
-        script: |
-          JAVA_HOME=$JAVA_HOME_17
-          echo "JAVA_HOME=$JAVA_HOME" >> $CM_ENV
-      - name: Get Flutter packages
-        script: |
-          flutter packages pub get
-      - name: Build APK
-        script: |
-          flutter build apk --release
-    artifacts:
-      - build/app/outputs/flutter-apk/*.apk
+name: earning_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
