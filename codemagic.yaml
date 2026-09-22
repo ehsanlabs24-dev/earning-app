@@ -7,12 +7,9 @@ workflows:
       flutter: stable
       java: 17
     scripts:
-      - name: Set Java 17 explicitly
+      - name: Force JDK 17 for Flutter
         script: |
-          JAVA_HOME=$JAVA_HOME_17
-          echo "JAVA_HOME=$JAVA_HOME_17" >> $CM_ENV
-          export JAVA_HOME=$JAVA_HOME_17
-          export PATH=$JAVA_HOME_17/bin:$PATH
+          flutter config --jdk-dir $JAVA_HOME_17
       - name: Get Flutter packages
         script: |
           flutter packages pub get
