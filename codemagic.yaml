@@ -7,6 +7,12 @@ workflows:
       flutter: stable
       java: 17
     scripts:
+      - name: Set Java 17 explicitly
+        script: |
+          JAVA_HOME=$JAVA_HOME_17
+          echo "JAVA_HOME=$JAVA_HOME_17" >> $CM_ENV
+          export JAVA_HOME=$JAVA_HOME_17
+          export PATH=$JAVA_HOME_17/bin:$PATH
       - name: Get Flutter packages
         script: |
           flutter packages pub get
